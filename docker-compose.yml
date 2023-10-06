@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  geoserver:
+    image: docker.osgeo.org/geoserver:${GEOSERVER_VERSION}
+    ports:
+      - ${GEOSERVER_PORT}:8080
+    environment:
+      - INSTALL_EXTENSIONS=true
+      - STABLE_EXTENSIONS=${GEOSERVER_EXTENSIONS}
+      - SKIP_DEMO_DATA=${GEOSERVER_SKIP_DEMO_DATA}
+      - EXTRA_JAVA_OPTS=-Xms1G -Xmx2G
+    volumes:
+      - ./geoserver/data:/opt/geoserver_data/
+      - ./geoserver/fonts:/opt/additional_fonts/
+      - ./geoserver/additional_libs:/opt/additional_libs/
+    restart: on-failure
+
+  postgis:
+    image: postgis/postgis:${POSTGRES_VERSION}-${POSTGIS_VERSION}
+    ports:
+      - ${POSTGIS_PORT}:5432
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgis_volume:/var/lib/postgresql/data
+    restart: on-failure
+
+volumes:
+  postgis_volume: 
