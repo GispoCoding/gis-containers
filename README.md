@@ -16,6 +16,16 @@ To install Docker and Docker-compose follow the instructions [here](https://docs
 
 ## Getting Started
 
+### Quick start
+```bash
+git clone https://github.com/GispoCoding/gis-containers.git
+cd gis-containers
+cp .env.example .env
+docker-compose up -d
+```
+
+For more detailed instructions, see the sections below.
+
 ### 1. Clone the repository
 
 ```bash
