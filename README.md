@@ -19,8 +19,8 @@ To install Docker and Docker-compose follow the instructions [here](https://docs
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/GispoCoding/gis-containers.git
+cd gis-containers
 ```
 
 ### 2. Configure the environment variables
